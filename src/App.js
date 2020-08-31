@@ -6,6 +6,7 @@ import Login from './components/views/Login/Login';
 import TablesStatus from './components/views/TablesStatus/TablesStatus';
 import Waiter from './components/views/Waiter/Waiter';
 import Kitchen from './components/views/Kitchen/Kitchen';
+import Booking from './components/views/Booking/Booking';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route exact path={`${process.env.PUBLIC_URL}/tables`} component={TablesStatus} />
           <Route exact path={`${process.env.PUBLIC_URL}/waiter`} component={Waiter} />
           <Route exact path={`${process.env.PUBLIC_URL}/kitchen`} component={Kitchen} />
-            
+          <Route exact path={`${process.env.PUBLIC_URL}/tables/booking/:id`} component={Booking} />  
         </Switch>
       </MainLayout>
     </BrowserRouter>
