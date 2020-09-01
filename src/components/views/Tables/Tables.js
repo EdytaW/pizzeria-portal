@@ -1,18 +1,20 @@
 import React from 'react';
-import styles from './TablesStatus.module.scss';
+import styles from './Tables.module.scss';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const TablesStatus = ({id='ID_booking'}) => (
+const Tables = ({id='123'}) => (
   <div className={styles.component}>
-    <h2>TablesStatus view</h2>
+    <h2>Tables view</h2>
     <Link to={`${process.env.PUBLIC_URL}/tables/booking/new`}>NEW</Link>
     <Link to={`${process.env.PUBLIC_URL}/tables/booking/${id}`}>ID</Link>
+    <Link to={`${process.env.PUBLIC_URL}/tables/events/:new`}>EVENTS_NEW</Link>
+    <Link to={`${process.env.PUBLIC_URL}/tables/events/eventID`}>ID</Link>
   </div>
 );
 
-TablesStatus.propTypes = {
+Tables.propTypes = {
   id: PropTypes.string,
 };
 
-export default TablesStatus;
+export default Tables;
