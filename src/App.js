@@ -12,6 +12,7 @@ import Event from './components/views/Event/Event';
 import { StylesProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import OrderNew from './components/views/OrderNew/OrderNew';
 
 const theme = createMuiTheme({
   palette: {
@@ -42,7 +43,7 @@ function App() {
               <Route exact path={`${process.env.PUBLIC_URL}/tables/booking/:id`} component={Booking} />
               <Route exact path={`${process.env.PUBLIC_URL}/tables/events/:new`} component={Event} />
               <Route exact path={`${process.env.PUBLIC_URL}/tables/events/:id`} component={Event} /> 
-              <Route exact path={`${process.env.PUBLIC_URL}/waiter/order/new`} component={Order} />
+              <Route exact path={`${process.env.PUBLIC_URL}/waiter/order/new`} component={OrderNew} />
               <Route exact path={`${process.env.PUBLIC_URL}/waiter/order/:id`} component={Order} /> 
 
             </Switch>
