@@ -3,13 +3,13 @@ import styles from './Tables.module.scss';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Tables = ({id='123'}) => (
+const Tables = () => (
   <div className={styles.component}>
     <h2>Tables view</h2>
-    <Link to={`${process.env.PUBLIC_URL}/tables/booking/new`}>NEW</Link>
-    <Link to={`${process.env.PUBLIC_URL}/tables/booking/${id}`}>ID</Link>
-    <Link to={`${process.env.PUBLIC_URL}/tables/events/:new`}>EVENTS_NEW</Link>
-    <Link to={`${process.env.PUBLIC_URL}/tables/events/eventID`}>ID</Link>
+    <Link to={`${process.env.PUBLIC_URL}/tables/booking/new`}>NEW</Link><span> </span>
+    <Link to={`${process.env.PUBLIC_URL}/tables/booking/123`}>ID</Link><span> </span>
+    <Link to={`${process.env.PUBLIC_URL}/tables/events/new`}>EVENTS_NEW</Link><span> </span>
+    <Link to={`${process.env.PUBLIC_URL}/tables/events/eventID`}>ID</Link><span> </span>
   </div>
 );
 
