@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 
+
 const demoContent = [
   {id: '1', status: 'free', order: null},
   {id: '2', status: 'thinking', order: null},
@@ -87,8 +88,8 @@ const Waiter = () => (
       </TableBody>
     </Table>
     <div>
-      <Link to={`${process.env.PUBLIC_URL}/waiter/order/new`}>NEW</Link><span> </span>	     
-      <Link to={`${process.env.PUBLIC_URL}/waiter/order/:id`}>ID</Link>
+      <Button component={Link} to={`${process.env.PUBLIC_URL}/waiter/order/new`}>NEW</Button><span> </span>	     
+      <Button component={Link} to={`${process.env.PUBLIC_URL}/waiter/order/:id`}>ID</Button>
     </div>
   </Paper>
 );

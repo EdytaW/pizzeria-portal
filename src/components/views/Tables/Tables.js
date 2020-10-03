@@ -120,10 +120,10 @@ const Tables = () => (
         ))}
       </TableBody>
     </Table>
-    <Link to={`${process.env.PUBLIC_URL}/tables/booking/new`}>NEW</Link><span> </span>
-    <Link to={`${process.env.PUBLIC_URL}/tables/booking/123`}>ID</Link><span> </span>
-    <Link to={`${process.env.PUBLIC_URL}/tables/events/new`}>EVENTS_NEW</Link><span> </span>
-    <Link to={`${process.env.PUBLIC_URL}/tables/events/eventID`}>ID</Link><span> </span>
+    <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`}>NEW</Button><span> </span>
+    <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/123`}>ID</Button><span> </span>
+    <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/events/new`}>EVENTS_NEW</Button><span> </span>
+    <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/events/eventID`}>ID</Button><span> </span>
   </Paper>
 );
 
