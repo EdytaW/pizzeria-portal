@@ -11,7 +11,7 @@ import TableBody from '@material-ui/core/TableBody';
 import Button from '@material-ui/core/Button';
 
 const demoContent = [
-  {id: '10:00 ', status: 'reservation', status2: null},
+  {id: '10:00 ', status: 'reservation', order: null},
   {id: '10:30 ', status: 'event', order: null},
 ];
 

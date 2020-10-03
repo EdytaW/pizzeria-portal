@@ -19,7 +19,7 @@ const Login = () => (
         <TableCell><input></input></TableCell> 
       </TableRow>
     </TableHead>
-    <Button>Log in</Button>
+    <Button to={`${process.env.PUBLIC_URL}/waiter/order/`}>Log in</Button>
   </Paper>
 );
 
