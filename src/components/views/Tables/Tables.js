@@ -10,42 +10,87 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import Button from '@material-ui/core/Button';
 
-const demoContent = [
-  {id: '10:00 ', status: 'reservation', order: null},
-  {id: '10:30 ', status: 'event', order: null},
-];
+const demoContent = {
+  'table1': [
+    {
+      status: 'free',
+      hour: 10.5,
+      orderId: 123,
+    },
+    {
+      status: 'free',
+      hour: 12,
+      orderId: 123,
+    },
+  ],
+  'table2': [
+    {
+      status: 'free',
+      hour: 10.5,
+      orderId: 123,
+    },
+    {
+      status: 'free',
+      hour: 12,
+      orderId: 123,
+    },
+  ],
+  'table3': [
+    {
+      status: 'free',
+      hour: 10.5,
+      orderId: 123,
+    },
+    {
+      status: 'free',
+      hour: 12,
+      orderId: 123,
+    },
+  ],
+  'table4': [
+    {
+      status: 'free',
+      hour: 11,
+      orderId: 123,
+    },
+    {
+      status: 'thinking',
+      hour: 15.5,
+      orderId: 123,
+    },
+  ],
+};
 
-const renderActions = status => {
-  switch (status) {
-    case 'free':
-      return (
-        <>
-          <Button>reservation</Button>
-          <Button>new order</Button>
-        </>
-      );
-    case 'thinking':
-      return (
-        <Button>new order</Button>
-      );
-    case 'ordered':
-      return (
-        <Button>prepared</Button>
-      );
-    case 'prepared':
-      return (
-        <Button>delivered</Button>
-      );
-    case 'delivered':
-      return (
-        <Button>paid</Button>
-      );
-    case 'paid':
-      return (
-        <Button>free</Button>
-      );
-    default:
-      return null;
+const generateHours = () => {
+  const tmp = [];
+  for (let i = 10; i <= 24; i += 0.5) {
+    tmp.push(i);
+  }
+
+  return tmp;
+};
+
+const parseHour = (hour) => {
+  const h = parseInt(hour);
+
+  let m = '00';
+
+  if (hour - h > 0) {
+    m = '30';
+  }
+
+  return `${h}:${m}`;
+};
+
+const hours = generateHours();
+
+const renderTable = (tableId, hour) => {
+  const reservation = demoContent[tableId].find(el => el.hour === hour);
+
+  if (reservation) {
+    return <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/${reservation.orderId}`}>Show details</Button>;
+  } else {
+    return '-';
   }
 };
 
@@ -55,37 +100,30 @@ const Tables = () => (
       <TableHead>
         <TableRow>
           <TableCell>Time</TableCell>
-          <TableCell>table 1</TableCell>
-          <TableCell>table 2</TableCell>
+          {Object.keys(demoContent).map(key => (
+            <TableCell key={key}>{key}</TableCell>
+          ))}
         </TableRow>
       </TableHead>
       <TableBody>
-        {demoContent.map(row => (
-          <TableRow key={row.id}>
+        {hours.map(hour => (
+          <TableRow key={hour}>
             <TableCell component="th" scope="row">
-              {row.id}
+              {parseHour(hour)}
             </TableCell>
-            <TableCell>
-              {row.status}
-            </TableCell>
-            <TableCell>
-              {row.order && (
-                <Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
-                  {row.order}
-                </Button>
-              )}
-            </TableCell>
-            <TableCell>
-              {renderActions(row.status)}
-            </TableCell>
+            {Object.keys(demoContent).map(key => (
+              <TableCell key={key}>
+                {renderTable(key, hour)}
+              </TableCell>
+            ))}
           </TableRow>
         ))}
       </TableBody>
-      <Link to={`${process.env.PUBLIC_URL}/tables/booking/new`}>NEW</Link><span> </span>
-      <Link to={`${process.env.PUBLIC_URL}/tables/booking/123`}>ID</Link><span> </span>
-      <Link to={`${process.env.PUBLIC_URL}/tables/events/new`}>EVENTS_NEW</Link><span> </span>
-      <Link to={`${process.env.PUBLIC_URL}/tables/events/eventID`}>ID</Link><span> </span>
     </Table>
+    <Link to={`${process.env.PUBLIC_URL}/tables/booking/new`}>NEW</Link><span> </span>
+    <Link to={`${process.env.PUBLIC_URL}/tables/booking/123`}>ID</Link><span> </span>
+    <Link to={`${process.env.PUBLIC_URL}/tables/events/new`}>EVENTS_NEW</Link><span> </span>
+    <Link to={`${process.env.PUBLIC_URL}/tables/events/eventID`}>ID</Link><span> </span>
   </Paper>
 );
 

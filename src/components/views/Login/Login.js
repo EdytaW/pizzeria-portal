@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const Login = () => (
   <Paper className={styles.component}>
@@ -19,7 +20,7 @@ const Login = () => (
         <TableCell><input></input></TableCell> 
       </TableRow>
     </TableHead>
-    <Button to={`${process.env.PUBLIC_URL}/waiter/order/`}>Log in</Button>
+    <Button component={Link} to={`${process.env.PUBLIC_URL}/`}>Log in</Button>
   </Paper>
 );
 
