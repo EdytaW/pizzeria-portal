@@ -265,5 +265,24 @@
       "ppl": 3,
       "starters": ["water"]
     }
+  ],
+
+  "tables": [
+    {
+      "id": 1,
+      "status": "free", 
+      "order": "null"
+    },
+    {
+      "id": 2, 
+      "status": "thinking", 
+      "order": 123
+    },
+    {
+      "id": 3, 
+      "status": "ordered",
+      "order": 123
+    }
+    
   ]
 }

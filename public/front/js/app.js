@@ -14,7 +14,7 @@ const app = {
     let pageMatchingHash = thisApp.pages[0].id;
 
     for (let page of thisApp.pages){
-      if(page.id == idFromHash){
+      if(page.id === idFromHash){
         pageMatchingHash = page.id;
         break;
       }
@@ -69,7 +69,7 @@ const app = {
     for(let link of thisApp.navLinks){
       link.classList.toggle(
         classNames.nav.active, 
-        link.getAttribute('href') == '#' + pageId
+        link.getAttribute('href') === '#' + pageId
       );
     }
     
@@ -143,7 +143,7 @@ const app = {
       const name = document.querySelector('.review-author');
 
       for (let dot of dots) {
-        if (dot.id == 'dot-'+ (i + 1)) {
+        if (dot.id === 'dot-'+ (i + 1)) {
           dot.classList.add('active');
         } else {
           dot.classList.remove('active');

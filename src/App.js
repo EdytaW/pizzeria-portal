@@ -4,7 +4,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Dashboard from './components/views/Dashboard/Dashboard';
 import Login from './components/views/Login/Login';
 import Tables from './components/views/Tables/Tables';
-import Waiter from './components/views/Waiter/WaiterContainer.js';
+import Waiter from './components/views/Waiter/WaiterContainer';
 import Order from './components/views/Order/Order';
 import Kitchen from './components/views/Kitchen/Kitchen';
 import Booking from './components/views/Booking/Booking';
