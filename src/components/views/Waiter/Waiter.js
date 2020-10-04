@@ -12,10 +12,10 @@ import Button from '@material-ui/core/Button';
 class Waiter extends React.Component {
   static propTypes = {
     fetchTables: PropTypes.func,
-    tables: PropTypes.array,
+    tables: PropTypes.func,
     loading: PropTypes.shape({
       active: PropTypes.bool,
-      error: PropTypes.anyOf(PropTypes.bool,PropTypes.string),
+      error: PropTypes.oneOf(PropTypes.bool,PropTypes.string),
     }),
   }
 
@@ -56,7 +56,7 @@ class Waiter extends React.Component {
       default:
         return null;
     }
-  }
+  };
 
   render() {
     const { loading: { active, error }, tables } = this.props;
