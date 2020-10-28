@@ -9,8 +9,8 @@ import TableRow from '@material-ui/core/TableRow';
 import { TableBody } from '@material-ui/core';
 
 const democontent = [
-  {table: '1', time: '10:30'},
-  {table: '2', time: '10:00'},
+  {table: '1', time: '10:30', status: 'thinking'},
+  {table: '2', time: '10:00', status: 'ordered'},
 ];
 const Booking = (props) => (
   <Paper className={styles.component}>
@@ -20,6 +20,7 @@ const Booking = (props) => (
         <TableRow>
           <TableCell>Table</TableCell>
           <TableCell>Time</TableCell>
+          <TableCell>Status</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -30,6 +31,9 @@ const Booking = (props) => (
             </TableCell>
             <TableCell component="th" scope="row">
               {row.time}
+            </TableCell>
+            <TableCell component="th" scope="row">
+              {row.status}
             </TableCell>
           </TableRow>
         ))}

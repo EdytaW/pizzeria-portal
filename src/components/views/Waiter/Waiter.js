@@ -24,39 +24,63 @@ class Waiter extends React.Component {
     fetchTables();
   }
 
-  renderActions(status){
+  tableStatusChange(id, status) {
+    if (status === 'free') {
+      status = 'thinking';
+    }
+    else if (status === 'thinking') {
+      status = 'ordered';
+    }
+    else if (status === 'ordered') {
+      status = 'prepared';
+    }
+    else if (status === 'prepared') {
+      status = 'delivered';
+    }
+    else if (status === 'delivered') {
+      status = 'paid';
+    }
+    else if (status === 'paid') {
+      status = 'free';
+    }
+
+    this.changedStatus(id, status);
+  }
+
+  renderActions(id, status){
     switch (status) {
       case 'free':
         return (
           <>
-            <Button>thinking</Button>
+            <Button onChange={this.statusChanger(id, 'thinking')}>thinking</Button>
             <Button>new order</Button>
           </>
         );
       case 'thinking':
         return (
-          <Button>new order</Button>
+          <Button onChange={this.statusChanger(id, 'ordered')}>new order</Button>
         );
       case 'ordered':
         return (
-          <Button>prepared</Button>
+          <Button onChange={this.statusChanger(id, 'prepared')}>prepared</Button>
         );
+        
       case 'prepared':
         return (
-          <Button>delivered</Button>
+          <Button onChange={this.statusChanger(id, 'delivered')}>delivered</Button>
         );
       case 'delivered':
         return (
-          <Button>paid</Button>
+          <Button onChange={this.statusChanger(id, 'paid')}>paid</Button>
         );
       case 'paid':
         return (
-          <Button>free</Button>
+          <Button onChange={this.statusChanger(id, 'free')}>free</Button>
         );
       default:
         return null;
     }
-  };
+  }
 
   render() {
     const { loading: { active, error }, tables } = this.props;
