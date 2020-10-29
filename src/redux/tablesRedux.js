@@ -40,8 +40,8 @@ export const fetchFromAPI = () => {
 export const fetchStatusChange = (row) => {
   return (dispatch) => {
 
-    Axios
-      .put(`${api.url}/api/${api.tables}/${row.id}`, row)
+    Axios //wysyla zapytania do ap 
+      .put(`${api.url}/${api.tables}/${row.id}`, row)
       .then(res => {
         dispatch(fetchStatus(res.data));
       });
@@ -89,7 +89,11 @@ export default function reducer(statePart = [], action = {}) {
       });
       return {
         ...statePart,
-        data: newData, 
+        data: newData,
+        loading: {
+          active: false,
+          error: false, 
+        },
       };
     }
     default:

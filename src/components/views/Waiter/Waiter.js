@@ -12,10 +12,10 @@ import Button from '@material-ui/core/Button';
 class Waiter extends React.Component {
   static propTypes = {
     fetchTables: PropTypes.func,
-    tables: PropTypes.func,
+    tables: PropTypes.array,
     loading: PropTypes.shape({
       active: PropTypes.bool,
-      error: PropTypes.oneOf(PropTypes.bool,PropTypes.string),
+      error: PropTypes.oneOfType([PropTypes.bool,PropTypes.string]),
     }),
     changedStatus: PropTypes.func,
   }
@@ -55,30 +55,30 @@ class Waiter extends React.Component {
       case 'free':
         return (
           <>
-            <Button onChange={this.statusChanger(row)}>thinking</Button>
+            <Button onClick={()=> this.tableStatusChange(row)}>thinking</Button>
             <Button>new order</Button>
           </>
         );
       case 'thinking':
         return (
-          <Button onChange={this.statusChanger(row)}>new order</Button>
+          <Button onClick={()=>this.tableStatusChange(row)}>new order</Button>
         );
       case 'ordered':
         return (
-          <Button onChange={this.statusChanger(row)}>prepared</Button>
+          <Button onClick={()=>this.tableStatusChange(row)}>prepared</Button>
         );
         
       case 'prepared':
         return (
-          <Button onChange={this.statusChanger(row)}>delivered</Button>
+          <Button onClick={()=>this.tableStatusChange(row)}>delivered</Button>
         );
       case 'delivered':
         return (
-          <Button onChange={this.statusChanger(row)}>paid</Button>
+          <Button onClick={()=>this.tableStatusChange(row)}>paid</Button>
         );
       case 'paid':
         return (
-          <Button onChange={this.statusChanger(row)}>free</Button>
+          <Button onClick={this.tableStatusChange(row)}>free</Button>
         );
       default:
         return null;
@@ -125,15 +125,12 @@ class Waiter extends React.Component {
                   <TableCell>
                     {row.order && (
                       <Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
-                        {row.orderId}
+                        {row.order}
                       </Button>
                     )}
                   </TableCell>
                   <TableCell>
-                    {row.tableId}
-                  </TableCell>
-                  <TableCell>
-                    {this.renderActions(row.status)}
+                    {this.renderActions(row)}
                   </TableCell>
                 </TableRow>
               ))}
