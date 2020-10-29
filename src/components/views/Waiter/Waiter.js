@@ -47,35 +47,36 @@ class Waiter extends React.Component {
     this.changedStatus(id, status);
   }
 
-  renderActions(id, status){
+  renderActions(row){
+    const status = row.status;
     switch (status) {
       case 'free':
         return (
           <>
-            <Button onChange={this.statusChanger(id, 'thinking')}>thinking</Button>
+            <Button onChange={this.statusChanger(row)}>thinking</Button>
             <Button>new order</Button>
           </>
         );
       case 'thinking':
         return (
-          <Button onChange={this.statusChanger(id, 'ordered')}>new order</Button>
+          <Button onChange={this.statusChanger(row)}>new order</Button>
         );
       case 'ordered':
         return (
-          <Button onChange={this.statusChanger(id, 'prepared')}>prepared</Button>
+          <Button onChange={this.statusChanger(row)}>prepared</Button>
         );
         
       case 'prepared':
         return (
-          <Button onChange={this.statusChanger(id, 'delivered')}>delivered</Button>
+          <Button onChange={this.statusChanger(row)}>delivered</Button>
         );
       case 'delivered':
         return (
-          <Button onChange={this.statusChanger(id, 'paid')}>paid</Button>
+          <Button onChange={this.statusChanger(row)}>paid</Button>
         );
       case 'paid':
         return (
-          <Button onChange={this.statusChanger(id, 'free')}>free</Button>
+          <Button onChange={this.statusChanger(row)}>free</Button>
         );
       default:
         return null;
@@ -122,9 +123,12 @@ class Waiter extends React.Component {
                   <TableCell>
                     {row.order && (
                       <Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
-                        {row.order}
+                        {row.orderId}
                       </Button>
                     )}
+                  </TableCell>
+                  <TableCell>
+                    {row.tableId}
                   </TableCell>
                   <TableCell>
                     {this.renderActions(row.status)}
