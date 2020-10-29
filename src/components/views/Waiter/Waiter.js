@@ -17,6 +17,7 @@ class Waiter extends React.Component {
       active: PropTypes.bool,
       error: PropTypes.oneOf(PropTypes.bool,PropTypes.string),
     }),
+    changedStatus: PropTypes.func,
   }
 
   componentDidMount(){
@@ -24,27 +25,28 @@ class Waiter extends React.Component {
     fetchTables();
   }
 
-  tableStatusChange(id, status) {
-    if (status === 'free') {
-      status = 'thinking';
+  tableStatusChange(row) {
+    if (row.status === 'free') {
+      row.status = 'thinking';
     }
-    else if (status === 'thinking') {
-      status = 'ordered';
+    else if (row.status === 'thinking') {
+      row.status = 'ordered';
     }
-    else if (status === 'ordered') {
-      status = 'prepared';
+    else if (row.status === 'ordered') {
+      row.status = 'prepared';
     }
-    else if (status === 'prepared') {
-      status = 'delivered';
+    else if (row.status === 'prepared') {
+      row.status = 'delivered';
     }
-    else if (status === 'delivered') {
-      status = 'paid';
+    else if (row.status === 'delivered') {
+      row.status = 'paid';
     }
-    else if (status === 'paid') {
-      status = 'free';
+    else if (row.status === 'paid') {
+      row.status = 'free';
     }
 
-    this.changedStatus(id, status);
+    const {changedStatus} = this.props;
+    changedStatus(row);
   }
 
   renderActions(row){
